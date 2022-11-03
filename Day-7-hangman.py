@@ -1,6 +1,7 @@
 import random
 import hangman_art as ha
 import hangman_word as hw
+#from hangman_word import word_list
 
 print(ha.logo)
 #TODO-1: - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
@@ -12,7 +13,7 @@ word_len = len(chosen_word)
 lives = 6
 
 #Testing code
-#print(f'Pssst, the solution is {chosen_word}.')
+print(f'Pssst, the solution is {chosen_word}.')
 
 #TODO-3: - Create an empty List called display.
 #For each letter in the chosen_word, add a "_" to 'display'.
@@ -37,10 +38,13 @@ while not end_of_game:
   #If lives goes down to 0 then the game should stop and it should print "You lose."
   if guess not in chosen_word:
     lives -= 1
+    print(f"You gueesed {guess}, that's not in the word. You lose a life")
     if lives == 0:
       end_of_game = True
       print("You Lose.")
   #Join all the elements in the list and turn it into a String.
+  if guess in display:
+    print(f"You have already guessed {guess}")
   print(f"{' '.join(display)}")
 
   if "_" not in display:
